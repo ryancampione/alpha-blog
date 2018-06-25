@@ -50,4 +50,3 @@ group :production do
   #Post gress
   gem 'pg'
 end
-
