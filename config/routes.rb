@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   
   get 'pages/about', to: 'pages#about'
 
+  # article web paths
+  resources :articles
+  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
