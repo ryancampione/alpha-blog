@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
    
+   # new article template
    def new
       @article = Article.new
    end
    
-   # create a new article
+   # create a new article in the Article table
    def create
       #render plain: params[:article].inspect
       
@@ -15,6 +16,24 @@ class ArticlesController < ApplicationController
       else
          render 'new'
       end
+   end
+   
+   # edit article template
+   def edit
+      @article = Article.find(params[:id])
+   end
+   
+   # update article in the Article table
+   def update
+      @article = Article.find(params[:id])
+      
+      if @article.update(article_params)
+         flash[:notice] = "Article was successfully updated"
+         redirect_to article_path(@article)
+      else
+         render 'edit'
+      end
+      
    end
    
    # display an article
