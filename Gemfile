@@ -49,5 +49,5 @@ end
 
 group :production do
   #Post gress
-  gem 'pg'
+  gem 'pg', '~> 0.11'
 end
