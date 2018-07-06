@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
    
+   def index
+      @articles = Article.all
+   end
+   
    # new article template
    def new
       @article = Article.new
