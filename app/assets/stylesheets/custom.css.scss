@@ -2,6 +2,11 @@ $navbar-default-bg: #4b38ff;
 
 @import "bootstrap"; 
 
+.center {
+    text-align: center;
+}
+
+// navigation bar
 #logo {
     float: left;
     font-size: 1.7em;
@@ -14,4 +19,53 @@ $navbar-default-bg: #4b38ff;
 #logo:hover {
     color: #fff;
     text-decoration: none;
+}
+
+// footer
+.footer {
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: 777;
+}
+
+.footer small {
+    float: left;   
+}
+
+.footer ul {
+    float: right;
+    list-style: none;
+    margin-left: 15px;
+}
+
+.footer a:hover {
+    color: 777;
+}
+
+// homepage jumbotron 
+.jumbotron {
+    background-image: asset-url('beach_tent_city.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    max-height: 95%;
+}
+
+.jumbotron h1 {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.jumbotron p{
+    color: #fff;
+    text-align: center;
+}
+
+#sign-up {
+    position:relative; 
+    float:center;
+    vertical-align: center;
+    margin-top: 50px;
 }
