@@ -1,13 +1,23 @@
 <!-- notify the user of any errors -->
 <% if @article.errors.any? %>
-    <h2>The following errors prevented the article from being created:</h2>
-    <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-    </ul>
+    <div class="row justify-content-md-center">
+        <div class="col-8 col-offset-2">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading">The following <%= pluralize(@article.errors.count, "error") %> prohibited this article from saving:</h5>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <ul>
+                    <% @article.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
 <% end%>
 
+<!-- article form -->
 <div class="col-xs-12">
     <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
         <div class="form-group row">
