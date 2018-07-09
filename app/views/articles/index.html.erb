@@ -1,21 +1,25 @@
-<H1>All articles</H1>
+<H1 align="center">All Articles</H1>
 
-<p><%= link_to "Create new article", new_article_path %></p>
-
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-    </tr>
-    
-    <% @articles.each do |article| %>
-    <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td> <%= link_to "edit", edit_article_path(article) %></td>
-        <td> <%= link_to "show", article_path(article), method: :get %></td>
-        <td> <%= link_to "delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    </tr>
-    
-    <% end %>
-</table>
+<% @articles.each do |article| %>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="card bg-light mb-3">
+                <div class="card-header">
+                    <div class="article-title">
+                        <%= link_to article.title, article_path(article) %>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="article-body">
+                        <%= truncate(article.description, length: 100) %>
+                    </div>
+                    
+                    <div class="article-actions">
+                        <%= link_to "Edit", edit_article_path(article), class: "btn btn-primary btn-sm" %>
+                        <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure you want to delete this article?"}, class: "btn btn-danger btn-sm" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
