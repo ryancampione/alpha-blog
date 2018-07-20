@@ -14,9 +14,11 @@ class ArticlesController < ApplicationController
    
    # create a new article in the Article table
    def create
-      #render plain: params[:article].inspect
-      
       @article = Article.new(article_params)
+      
+      # this is temporary until users are fully implemented
+      @article.user = User.first
+      
       if @article.save
          flash[:success] = "Article was successfully created"
          redirect_to article_path(@article)
