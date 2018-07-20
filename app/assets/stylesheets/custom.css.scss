@@ -6,7 +6,7 @@ $navbar-default-bg: #4b38ff;
     text-align: center;
 }
 
-// navigation bar
+/* navigation bar */
 nav {
     margin-bottom: 10px;
 }
@@ -25,7 +25,7 @@ nav {
     text-decoration: none;
 }
 
-// footer
+/* footer */
 .footer {
     /* position: absolute; */
     bottom: 0;
@@ -56,7 +56,7 @@ nav {
     color: 777;
 }
 
-// homepage jumbotron 
+/* homepage jumbotron */
 .jumbotron {
     background-image: asset-url('beach_tent_city.jpg');
     background-size: cover;
@@ -83,12 +83,7 @@ nav {
     margin-top: 50px;
 }
 
-// display articles
-.article-actions {
-    border-top: 1px solid #eaeaea;
-    padding-top: 5px;
-}
-
+/* articles */
 .article-title {
     font-weight: bold;
     font-size: 1.5em;
@@ -96,4 +91,14 @@ nav {
 
 .article-body {
     padding-bottom: 15px;
+}
+
+.article-meta-details {
+    border-top: 1px solid #eaeaea;
+    margin-top: 15px;
+}
+
+.article-actions {
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
 }
