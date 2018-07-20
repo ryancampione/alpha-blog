@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # article web paths
   resources :articles
   
+  # users web paths
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
