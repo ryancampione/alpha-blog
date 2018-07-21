@@ -1,6 +1,13 @@
 class ArticlesController < ApplicationController
+   
    # run the set_article method first for these methods
    before_action :set_article, only: [:edit, :update, :show, :destroy]
+
+   # first require a logged user for all methods except for   
+   before_action:require_user, except: [:index, :show]
+   
+   # first require user to be the article's creator
+   before_action :require_creator_user, only: [:edit, :update, :destroy]
    
    # all articles index
    def index
@@ -64,5 +71,12 @@ class ArticlesController < ApplicationController
       
       def set_article
          @article = Article.find(params[:id])
+      end
+      
+      def require_creator_user
+         if current_user != @article.user
+            flash[:danger] = "You can only edit or delete your own articles"
+            redirect_to root_path
+         end
       end
 end
