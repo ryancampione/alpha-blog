@@ -3,7 +3,7 @@
     <% if @article.user %>    
         <div class="card-header">
             <ul class="user-listing">
-                <li><%= link_to gravatar_for(@article.user), user_path(@article.user) %></li>
+                <li><%= link_to gravatar_for(@article.user, {size: 80}), user_path(@article.user) %></li>
                 <li class="user-title">Created by <%= link_to @article.user.username, user_path(@article.user) %> </li>
                 <li><small><%= pluralize(@article.user.articles.count, "article") %></small></li>
             </ul>
