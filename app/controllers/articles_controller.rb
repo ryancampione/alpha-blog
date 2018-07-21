@@ -23,8 +23,8 @@ class ArticlesController < ApplicationController
    def create
       @article = Article.new(article_params)
       
-      # this is temporary until users are fully implemented
-      @article.user = User.first
+      # set current user as the article's creator
+      @article.user = current_user
       
       if @article.save
          flash[:success] = "Article was successfully created"
