@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     
     # index user template
     def index
-       @users = User.all 
+       @users = User.paginate(page: params[:page], per_page: 5)
     end
     
     
@@ -41,7 +41,8 @@ class UsersController < ApplicationController
     
     # show user template
     def show
-       @user = User.find(params[:id]) 
+       @user = User.find(params[:id])
+       @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
     end
     
     private
