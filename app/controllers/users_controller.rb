@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
     
+    # index user template
+    def index
+       @users = User.all 
+    end
+    
+    
     # new user template
     def new
         @user = User.new
@@ -33,6 +39,7 @@ class UsersController < ApplicationController
         end
     end
     
+    # show user template
     def show
        @user = User.find(params[:id]) 
     end
