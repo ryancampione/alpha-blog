@@ -13,6 +13,11 @@
                         <li><%= link_to gravatar_for(user), user_path(user) %></li>
                         <li class="user-title"><%= link_to user.username, user_path(user) %> </li>
                         <li><small><%= pluralize(user.articles.count, "article") if user.articles.count > 0 %></small></li>
+                        <% if logged_in? && current_user.admin? %>
+                            <div class="user-actions">
+                                <li><%= link_to "Delete this user", user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{user.username} and all of their articles?"}, class: "btn btn-danger btn-sm" %></li>
+                            </div>
+                        <% end %>
                     </div>
                 </div>
             </ul>

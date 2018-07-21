@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
     
     # run the set_user method first for these methods
-    before_action :set_user, only: [:edit, :update, :show]
+    before_action :set_user, only: [:edit, :update, :show, :destroy]
     
-   # first require the same user
-   before_action :require_same_user, only: [:edit, :update]
+    # first require the same user
+    before_action :require_same_user, only: [:edit, :update]
+    
+    # first require an admin user
+    before_action :require_admin_user, only: [:index, :destroy]
     
     # index user template
     def index
        @users = User.paginate(page: params[:page], per_page: 5)
     end
-    
     
     # new user template
     def new
@@ -50,6 +52,12 @@ class UsersController < ApplicationController
        @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
     end
     
+    def destroy
+        flash[:warning] = "#{@user.username} and all articles created by this user have been deleted"
+        @user.destroy
+        redirect_to users_path
+    end
+    
     private
     def user_params
         # whitelist possible paramaters
@@ -61,9 +69,16 @@ class UsersController < ApplicationController
     end
     
     def require_same_user
-        if current_user != @user
+        if !logged_in? || (current_user != @user && !current_user.admin?)
             flash[:danger] = "You can only edit your own profile"
             redirect_to root_path
         end
+    end
+    
+    def require_admin_user
+       if logged_in? && !current_user.admin? 
+          flash[:danger] = "Only an admin can preform this action"
+          redirect_to root_path
+       end
     end
 end
