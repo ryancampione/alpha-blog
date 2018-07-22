@@ -4,16 +4,25 @@
     <%= will_paginate %>
 </div>
 
-<% @categories.each do |category| %>
+<% @categories.each_slice(2) do |category1, category2| %>
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card bg-light category-listing">
                 <div class="card-body">
-                    <strong><%= link_to "#{category.name}", category_path(category) %></strong>
+                    <strong><%= link_to "#{category1.name}", category_path(category1) %></strong>
                 </div>
             </div>    
         </div>
         
+        <% if category2 %>
+            <div class="col-md-3">
+                <div class="card bg-light category-listing">
+                    <div class="card-body">
+                        <strong><%= link_to "#{category2.name}", category_path(category2) %></strong>
+                    </div>
+                </div>    
+            </div>
+        <% end %>
     </div>
 <% end %>
 
