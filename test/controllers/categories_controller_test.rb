@@ -41,5 +41,4 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         assert_redirected_to categories_path
     end
     
-    
 end
