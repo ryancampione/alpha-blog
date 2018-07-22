@@ -1,5 +1,9 @@
 class Category < ActiveRecord::Base
     
+    before_save {
+        self.name = name.titleize
+    }
+    
     validates :name, 
         presence: true,
         uniqueness: {case_sensitive: false},

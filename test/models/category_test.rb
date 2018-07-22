@@ -31,4 +31,8 @@ class CategoryTest < ActiveSupport::TestCase
         assert_not @category.valid?
     end
     
+    test "name should be titleized" do
+        @category.save
+        assert_match "Sports", @category.name
+    end
 end

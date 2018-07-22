@@ -1,8 +1,12 @@
 <h1 align="center">All categories</h1>
 
+<div class="pagination justify-content-center">
+    <%= will_paginate %>
+</div>
+
 <% @categories.each do |category| %>
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="card bg-light category-listing">
                 <div class="card-body">
                     <strong><%= link_to "#{category.name}", category_path(category) %></strong>
@@ -12,3 +16,7 @@
         
     </div>
 <% end %>
+
+<div class="pagination justify-content-center">
+    <%= will_paginate %>
+</div>
