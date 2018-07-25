@@ -39,7 +39,7 @@ class UpdateArticlesTest < ActionDispatch::IntegrationTest
         assert_match "This is the descritpion of an edited article", response.body
     end
     
-    test "invalid article submission should result in failure" do
+    test "invalid article update should result in failure" do
         
         sign_in_as(@user, "password")
         
