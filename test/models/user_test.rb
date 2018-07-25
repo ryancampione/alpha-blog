@@ -76,5 +76,5 @@ class UserTest < ActiveSupport::TestCase
        @user.password = "a" * 7
        assert_not @user.valid?
     end
-    
+
 end
