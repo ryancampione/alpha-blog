@@ -8,10 +8,6 @@ class CreateArticlesTest < ActionDispatch::IntegrationTest
             email: "username@email.com", 
             password: "password", 
         )
-        
-        @article = Article.new(
-            
-        )
     end
    
    test "get new article form and create an article" do
