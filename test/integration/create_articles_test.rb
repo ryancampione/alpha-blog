@@ -30,6 +30,7 @@ class CreateArticlesTest < ActionDispatch::IntegrationTest
             follow_redirect!
         end
         assert_template 'articles/show'
+        assert_select 'div.alert-success'
         assert_match "Test article", response.body
     end
     
