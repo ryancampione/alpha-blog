@@ -6,10 +6,13 @@ class User < ActiveRecord::Base
         self.email = email.downcase
     }
     
+    INVALID_USERNAME_REGEX = /\s/i
+    
     validates :username, 
         presence: true, 
         uniqueness: {case_sensitive: false}, 
-        length: {minimum: 3, maximum: 25}
+        length: {minimum: 3, maximum: 25},
+        format: {without: INVALID_USERNAME_REGEX}
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
         
@@ -20,4 +23,8 @@ class User < ActiveRecord::Base
         format: {with: VALID_EMAIL_REGEX}
         
     has_secure_password
+    
+    validates :password,
+        length: {minimum: 8}
+    
 end
