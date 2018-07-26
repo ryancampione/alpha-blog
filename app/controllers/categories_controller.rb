@@ -20,6 +20,19 @@ class CategoriesController < ApplicationController
             render 'new'
         end
     end
+    
+    def edit
+       @category = Category.find(params[:id]) 
+    end
+    
+    def updated
+        @category = Category.find(params[:id])
+        if @category.update(category_params)
+            flash[:success] = "Category name was successfully updated"   
+        else
+           render 'edit'
+        end
+    end
    
     def show
         @category = Category.find(params[:id])

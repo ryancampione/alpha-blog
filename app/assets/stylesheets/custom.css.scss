@@ -114,12 +114,17 @@ nav {
     text-align: center;
 }
 
-.badge a {
+#category-badge a {
     color: #fff !important;
     text-decoration: none !important;
     text-transform: uppercase;
     letter-spacing: -0.5px;
     font-weight: bold;
+}
+
+#category-edit a {
+    color: #fff !important;
+    text-decoration: none !important;
 }
 
 .input_checkbox input {
