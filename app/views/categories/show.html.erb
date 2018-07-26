@@ -1,6 +1,7 @@
-<H1 align="center"><%= @category.name + " " + "article".pluralize(@category_articles.count)%></H1>
+<h1 align="center"><%= @category.name + " " + "Article".pluralize(@category_articles.count)%></h1>
 
 <% if logged_in? && current_user.admin? %>
+    <!-- Edit category button -->
     <div class="row justify-content-center">
         <span class="btn btn-primary btn-sm" id="category-edit"><%= link_to "Edit this category", edit_category_path(@category) %></span>
     </div>
@@ -8,6 +9,7 @@
 <% end %>
     
 <% if @category_articles.any? %>
+    <!-- Display articles for this category -->
     <div class="pagination justify-content-center">
         <%= will_paginate @category_articles %>
     </div>
