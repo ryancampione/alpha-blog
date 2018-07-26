@@ -16,7 +16,7 @@ class UpdateArticlesTest < ActionDispatch::IntegrationTest
         )
     end
    
-  test "get edit article form and update the article" do
+    test "get edit article form and update the article" do
         
         sign_in_as(@user, "password")
         
