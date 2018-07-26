@@ -1,0 +1,6 @@
+<div class="card bg-light category-listing">
+    <div class="card-body">
+        <strong><%= link_to "#{category.name}", category_path(category) %></strong><br />
+        <small><%= pluralize(category.articles.count, "article") %></small>
+    </div>
+</div>

@@ -7,20 +7,12 @@
 <% @categories.each_slice(2) do |category1, category2| %>
     <div class="row justify-content-center">
         <div class="col-md-3">
-            <div class="card bg-light category-listing">
-                <div class="card-body">
-                    <strong><%= link_to "#{category1.name}", category_path(category1) %></strong>
-                </div>
-            </div>    
+            <%= render 'category_badge', category: category1 %>    
         </div>
         
         <% if category2 %>
             <div class="col-md-3">
-                <div class="card bg-light category-listing">
-                    <div class="card-body">
-                        <strong><%= link_to "#{category2.name}", category_path(category2) %></strong>
-                    </div>
-                </div>    
+                <%= render 'category_badge', category: category2 %>   
             </div>
         <% end %>
     </div>
