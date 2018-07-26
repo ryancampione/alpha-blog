@@ -7,12 +7,12 @@
 <% @categories.each_slice(2) do |category1, category2| %>
     <div class="row justify-content-center">
         <div class="col-md-3">
-            <%= render 'category_badge', category: category1 %>    
+            <%= render 'category_preview', category: category1 %>    
         </div>
         
         <% if category2 %>
             <div class="col-md-3">
-                <%= render 'category_badge', category: category2 %>   
+                <%= render 'category_preview', category: category2 %>   
             </div>
         <% end %>
     </div>

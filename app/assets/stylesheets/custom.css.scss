@@ -114,10 +114,11 @@ nav {
     text-align: center;
 }
 
-.badge {
-    color: #fff;
+.badge a {
+    color: #fff !important;
+    text-decoration: none !important;
     text-transform: uppercase;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     font-weight: bold;
 }
 
