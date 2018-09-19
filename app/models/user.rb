@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
     has_many :articles, dependent: :destroy
     
+    before_create :generate_token
+    
     before_save {
         self.username = username.downcase
         self.email = email.downcase
@@ -26,5 +28,10 @@ class User < ActiveRecord::Base
     
     validates :password,
         length: {minimum: 8}
+
+    private
     
+    def generate_token
+        self.token = SecureRandom.urlsafe_base64
+    end
 end
