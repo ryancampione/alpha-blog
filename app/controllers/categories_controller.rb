@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
    
+   before_action :set_category, only: [:edit, :update, :show, :destroy]
+   
    before_action :require_admin_user, except: [:index, :show]
    
     def index
@@ -22,26 +24,35 @@ class CategoriesController < ApplicationController
     end
     
     def edit
-       @category = Category.find(params[:id]) 
+        
     end
     
-    def updated
-        @category = Category.find(params[:id])
+    def update
         if @category.update(category_params)
-            flash[:success] = "Category name was successfully updated"   
-        else
-           render 'edit'
+            flash[:success] = "Category name was successfully updated"
         end
+        render 'edit'
     end
    
     def show
-        @category = Category.find(params[:id])
         @category_articles = @category.articles.paginate(page: params[:page], per_page: 5)
+    end
+    
+    # delete an article
+    def destroy
+        @category.destroy
+      
+        flash[:success] = "Category was successfully deleted"
+        redirect_to categories_path
     end
        
     private
     def category_params
         params.require(:category).permit(:name)
+    end
+    
+    def set_category
+        @category = Category.find(params[:id]) 
     end
     
     def require_admin_user

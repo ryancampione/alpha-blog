@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :articles
   
   # categories web paths
-  resources :categories, except: [:destroy]
+  resources :categories
   
   # users web paths
   get 'signup', to: 'users#new'
